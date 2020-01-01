@@ -9,20 +9,39 @@ import "./App.css";
 // }
 // const text = "some text";
 
-const data = [
-  { id: 1, title: "Todo 1" },
-  { id: 2, title: "Todo 2" },
-  { id: 3, title: "Todo 3" }
-];
-
 class App extends React.Component {
+  state = {
+    todos: [
+      { id: 1, title: "Todo 1" },
+      { id: 2, title: "Todo 2" },
+      { id: 3, title: "Todo 3" }
+    ]
+  };
+
+  //фильтруем массив и оставляем в нём только те значения, которые не равны переданному id. Получившийся отфильтрованный массив записываем в новый стейт
+  deleteTodo = (e, id) => {
+    console.log("Delete id:" + id);
+    this.setState({ todos: this.state.todos.filter(todo => todo.id !== id) });
+  };
+
   render() {
+    if (this.state.todos.length === 0) {
+      return <h2>Задач нет</h2>;
+    }
+
     return (
       <div>
         <h1>Список дел</h1>
 
-        {data.map(todo => {
-          return <Todo key={todo.id} title={todo.title} />;
+        {this.state.todos.map(todo => {
+          return (
+            <Todo
+              key={todo.id}
+              id={todo.id}
+              title={todo.title}
+              deleteTodo={this.deleteTodo}
+            />
+          );
         })}
       </div>
     );
