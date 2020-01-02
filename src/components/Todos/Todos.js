@@ -5,16 +5,20 @@ export class Todos extends Component {
   render() {
     return (
       <div>
-        {this.props.todos.map(todo => {
-          return (
-            <Todo
-              key={todo.id}
-              id={todo.id}
-              title={todo.title}
-              deleteTodo={this.deleteTodo}
-            />
-          );
-        })}
+        {this.props.todos ? (
+          this.props.todos.map(todo => {
+            return (
+              <Todo
+                key={todo.id}
+                id={todo.id}
+                title={todo.title}
+                deleteTodo={this.deleteTodo}
+              />
+            );
+          })
+        ) : (
+          <h2>Загрузка</h2>
+        )}
       </div>
     );
   }
