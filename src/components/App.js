@@ -26,6 +26,20 @@ class App extends React.Component {
     this.setState({ todos: this.state.todos.filter(todo => todo.id !== id) });
   };
 
+  //жизненный цикл компонентов
+  componentDidMount() {
+    console.log("component did mount (after render");
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log("component updated");
+  }
+  //вызывается когда надо синхронизироваться новые пропсы со стейтом
+  static getDerivedStateFromState(nextProps, prevState) {
+    //
+    return null;
+  }
+
   render() {
     if (this.state.todos.length === 0) {
       return <h2>Задач нет</h2>;
