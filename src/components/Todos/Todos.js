@@ -5,6 +5,8 @@ export class Todos extends Component {
   render() {
     return (
       <div>
+        <h1>Список дел</h1>
+
         {this.props.todos ? (
           this.props.todos.map(todo => {
             return (
@@ -12,7 +14,7 @@ export class Todos extends Component {
                 key={todo.id}
                 id={todo.id}
                 title={todo.title}
-                deleteTodo={this.deleteTodo}
+                deleteTodo={this.props.deleteTodo}
               />
             );
           })

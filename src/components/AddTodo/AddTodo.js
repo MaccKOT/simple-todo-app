@@ -3,8 +3,8 @@ import "./AddTodo.css";
 
 export class AddTodo extends Component {
   state = {
-    title: "",
-    date: ""
+    title: ""
+    // date: ""
   };
 
   onChange = e => {
@@ -13,12 +13,18 @@ export class AddTodo extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-    console.log(
-      "Submit item: " + this.state.title + " date:" + this.state.date
-    );
-    //добавляем новой элемент в список дел
+    // console.log(
+    //   "Submit item: " + this.state.title + " date:" + this.state.date
+    // );
 
-    this.setState({ title: "", date: "" });
+    //добавляем новой элемент в список дел, используя переданный в пропсах метод addTodo, который обновит нам стейт и внесёт новый туда наш новый элемент
+    this.props.addTodo({
+      id: Date.now(),
+      title: this.state.title
+    });
+
+    //очистить ввод и перейти на главную страницу
+    this.setState({ title: "" });
   };
 
   render() {
@@ -31,13 +37,13 @@ export class AddTodo extends Component {
           value={this.state.title}
           onChange={e => this.onChange(e)}
         />
-        <input
+        {/* <input
           type="text"
           name="date"
           placeholder="Введите дату..."
           value={this.state.date}
           onChange={e => this.onChange(e)}
-        />
+        /> */}
         <button className="btn" type="submit">
           Добавить
         </button>

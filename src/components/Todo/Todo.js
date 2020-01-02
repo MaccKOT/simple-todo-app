@@ -15,8 +15,10 @@ class Todo extends React.Component {
           onClick={e => this.props.deleteTodo(e, this.props.id)}
           className="btn"
         >
+          <i className="material-icons right">delete</i>
           Удалить
         </button>
+        <div className="divider"></div>
       </div>
     );
   }

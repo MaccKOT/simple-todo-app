@@ -3,6 +3,8 @@ import { Switch, Route } from "react-router-dom";
 
 import Todos from "./Todos/Todos";
 import AddTodo from "./AddTodo/AddTodo";
+import Navbar from "./Navbar/Navbar";
+import About from "./About/About";
 
 import "./App.css";
 
@@ -24,10 +26,15 @@ class App extends React.Component {
     this.setState({ todos: this.state.todos.filter(todo => todo.id !== id) });
   };
 
+  addTodo = todo => {
+    this.setState({ todos: [todo, ...this.state.todos] });
+  };
+
   //жизненный цикл компонентов
   componentDidMount() {
-    console.log("component did mount (after render");
+    console.log("component did mount (after render)");
 
+    //лучше использовать fetch
     axios
       .get("https://jsonplaceholder.typicode.com/todos?_limit=5")
       .then(res => {
@@ -48,16 +55,32 @@ class App extends React.Component {
     //при роутинге корневой компонент должен быть снизу
     return (
       <div className="container">
-        <h1>Список дел</h1>
+        <Navbar />
 
         <Switch>
-          <Route exact path="/add" component={AddTodo} />
+          <Route
+            exact
+            path="/add"
+            render={() => {
+              return <AddTodo addTodo={this.addTodo} />;
+            }}
+          />
+
+          <Route
+            exact
+            path="/about"
+            render={() => {
+              return <About />;
+            }}
+          />
 
           <Route
             exact
             path="/"
             render={() => {
-              return <Todos todos={this.state.todos} />;
+              return (
+                <Todos todos={this.state.todos} deleteTodo={this.deleteTodo} />
+              );
             }}
           />
         </Switch>
