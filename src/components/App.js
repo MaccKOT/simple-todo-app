@@ -1,6 +1,7 @@
 import React from "react";
+import { Switch, Route } from "react-router-dom";
 
-import Todo from "./Todo/Todo";
+import Todos from "./Todos/Todos";
 import AddTodo from "./AddTodo/AddTodo";
 
 import "./App.css";
@@ -13,9 +14,9 @@ import "./App.css";
 class App extends React.Component {
   state = {
     todos: [
-      { id: 1, title: "Todo 1" },
-      { id: 2, title: "Todo 2" },
-      { id: 3, title: "Todo 3" }
+      { id: 1, title: "Задача 1" },
+      { id: 2, title: "Задача 2" },
+      { id: 3, title: "Задача 3" }
     ]
   };
 
@@ -30,22 +31,22 @@ class App extends React.Component {
       return <h2>Задач нет</h2>;
     }
 
+    //при роутинге корневой компонент должен быть снизу
     return (
       <div className="container">
-        <AddTodo />
-
         <h1>Список дел</h1>
 
-        {this.state.todos.map(todo => {
-          return (
-            <Todo
-              key={todo.id}
-              id={todo.id}
-              title={todo.title}
-              deleteTodo={this.deleteTodo}
-            />
-          );
-        })}
+        <Switch>
+          <Route exact path="/add" component={AddTodo} />
+
+          <Route
+            exact
+            path="/"
+            render={() => {
+              return <Todos todos={this.state.todos} />;
+            }}
+          />
+        </Switch>
       </div>
     );
   }
