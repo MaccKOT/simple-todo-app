@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+
 import Todo from "../Todo/Todo";
 
 export class Todos extends Component {

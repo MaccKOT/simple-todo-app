@@ -1,6 +1,6 @@
 # Simple ToDo App
 
-_Stack_: create-react-app, Materialize CSS
+_Stack_: create-react-app, Redux, Materialize CSS
 
 _Tutor_: Константин Голиченков
 

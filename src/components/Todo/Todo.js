@@ -1,4 +1,7 @@
 import React from "react";
+import { connect } from "react-redux";
+
+import { deleteTodo } from "../../store/actions/todoActions";
 
 import "./Todo.css";
 
@@ -12,7 +15,7 @@ class Todo extends React.Component {
       <div className="todo">
         <p>{this.props.title}</p>
         <button
-          onClick={e => this.props.deleteTodo(e, this.props.id)}
+          onClick={() => this.props.deleteTodo(this.props.id)}
           className="btn"
         >
           <i className="material-icons right">delete</i>
@@ -24,4 +27,4 @@ class Todo extends React.Component {
   }
 }
 
-export default Todo;
+export default connect(null, { deleteTodo })(Todo);

@@ -1,4 +1,8 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+
+import { addTodo } from "../../store/actions/todoActions";
+
 import "./AddTodo.css";
 
 export class AddTodo extends Component {
@@ -52,4 +56,4 @@ export class AddTodo extends Component {
   }
 }
 
-export default AddTodo;
+export default connect(null, { addTodo })(AddTodo);
