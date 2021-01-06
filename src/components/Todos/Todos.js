@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { Component } from 'react';
+// import { connect } from "react-redux";
 
-import Todo from "../Todo/Todo";
+import Todo from '../Todo/Todo';
 
 export class Todos extends Component {
   render() {
@@ -10,7 +10,7 @@ export class Todos extends Component {
         <h1>Список дел</h1>
 
         {this.props.todos ? (
-          this.props.todos.map(todo => {
+          this.props.todos.map((todo) => {
             return (
               <Todo
                 key={todo.id}
