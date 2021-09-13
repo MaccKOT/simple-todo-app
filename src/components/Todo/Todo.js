@@ -1,9 +1,9 @@
-import React from "react";
-import { connect } from "react-redux";
+import React from 'react';
+import { connect } from 'react-redux';
 
-import { deleteTodo } from "../../store/actions/todoActions";
+import { deleteTodo } from '../../store/actions/todoActions';
 
-import "./Todo.css";
+import './Todo.css';
 
 class Todo extends React.Component {
   // delete = (evt, title) => {
@@ -12,16 +12,15 @@ class Todo extends React.Component {
 
   render() {
     return (
-      <div className="todo">
+      <div className='todo'>
         <p>{this.props.title}</p>
         <button
           onClick={() => this.props.deleteTodo(this.props.id)}
-          className="btn"
-        >
-          <i className="material-icons right">delete</i>
+          className='btn'>
+          <i className='material-icons right'>delete</i>
           Удалить
         </button>
-        <div className="divider"></div>
+        <div className='divider'></div>
       </div>
     );
   }

@@ -1,4 +1,4 @@
-import * as actions from "../actions";
+import * as actions from '../actions';
 
 const initialState = { todos: null };
 
@@ -13,7 +13,7 @@ const reducer = (state = initialState, action) => {
     case actions.DELETE_TODO:
       return {
         ...state,
-        todos: state.todos.filter(todo => todo.id !== action.id)
+        todos: state.todos.filter((todo) => todo.id !== action.id),
       };
 
     default:
