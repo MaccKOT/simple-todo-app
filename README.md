@@ -4,4 +4,4 @@ _Stack_: create-react-app, Redux, [Materialize CSS via CDN](https://materializec
 
 _Tutor_: Константин Голиченков
 
-_Course name_: Изучаем React.js 16.7 & Redux (2019) [Udemy](https://www.sikoga.com/react)
+_Course name_: Изучаем React.js 16.7 & Redux (2019) (сайт автора не доступен)
